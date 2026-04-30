@@ -3,10 +3,23 @@ dist/
 build/
 backend/public/
 frontend/dist/
+shared/dist/
+
+# Environment files
 .env
 .env.*
+
+# Logs
 *.log
+npm-debug.log*
+
+# OS
 .DS_Store
 Thumbs.db
+
+# Test / coverage
 coverage/
+
+# Build tools
 .turbo/
+.vite/
