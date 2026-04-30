@@ -1,8 +1,10 @@
 node_modules/
+.vscode/
 dist/
 build/
 backend/public/
 frontend/dist/
+opencode.json
 shared/dist/
 
 # Environment files
