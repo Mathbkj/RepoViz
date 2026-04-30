@@ -1,4 +1,9 @@
-import { Octokit } from '@octokit/rest';
+// Octokit is ESM-only, use dynamic import
+let Octokit: any;
+(async () => {
+  const module = await import('@octokit/rest');
+  Octokit = module.Octokit;
+})();
 import type {
   GitHubUser, RepoTreeResponse, TreeNode,
   FileContentResponse, PushFileRequest, PushFileResponse,
