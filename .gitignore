@@ -1,0 +1,11 @@
+node_modules/
+dist/
+build/
+backend/public/
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+coverage/
+.turbo/
