@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "npm run build --workspace=shared && concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\"",
     "build": "npm run build --workspace=shared && npm run build --workspace=frontend && npm run build --workspace=backend",
+    "build:backend": "npm run build --workspace=shared && npm run build --workspace=backend",
     "start": "NODE_ENV=production node backend/dist/index.js"
   },
   "devDependencies": {

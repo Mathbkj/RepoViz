@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: repo-viz-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm run build --workspace=shared && npm run build --workspace=backend
+    startCommand: node backend/dist/index.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGIN
+        sync: false          # você preenche com a URL do Netlify no painel
+      - key: GITHUB_TOKEN
+        sync: false          # opcional — aumenta rate limit do GitHub

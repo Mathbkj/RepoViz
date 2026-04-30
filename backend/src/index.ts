@@ -8,7 +8,9 @@ const app = express();
 const PORT = process.env.PORT ?? 3001;
 const isProd = process.env.NODE_ENV === 'production';
 
-app.use(cors());
+// ALLOWED_ORIGIN=https://your-app.netlify.app  (or * for dev)
+const allowedOrigin = process.env.ALLOWED_ORIGIN ?? '*';
+app.use(cors({ origin: allowedOrigin }));
 app.use(express.json({ limit: '1mb' }));
 
 // Health check

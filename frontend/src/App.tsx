@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import type { AnalyzeResponse, GraphNode } from '@repo-viz/shared';
+import { API_BASE } from './config';
 import { Header } from './components/Header';
 import { RepoInput } from './components/RepoInput';
 import { DiagramCanvas } from './components/DiagramCanvas';
@@ -59,7 +60,7 @@ export default function App() {
     window.location.hash = encodeURIComponent(repoUrl);
 
     try {
-      const res = await fetch('/api/analyze', {
+      const res = await fetch(`${API_BASE}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ repoUrl }),
