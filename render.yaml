@@ -10,7 +10,11 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: GITHUB_CLIENT_ID
+        sync: false          # preencher no painel do Render
+      - key: GITHUB_CLIENT_SECRET
+        sync: false          # preencher no painel do Render
       - key: ALLOWED_ORIGIN
-        sync: false          # você preenche com a URL do Netlify no painel
-      - key: GITHUB_TOKEN
-        sync: false          # opcional — aumenta rate limit do GitHub
+        sync: false          # URL do Netlify após o deploy do frontend
+      - key: FRONTEND_URL
+        sync: false          # mesma URL do Netlify
