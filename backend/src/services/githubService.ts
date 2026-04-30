@@ -18,7 +18,7 @@ const MAX_NODES = 600;
 const SKIP_RE = /^(node_modules|\.git|dist|build|\.next|out|coverage|\.turbo|vendor)(\/|$)/;
 
 export class GitHubService {
-  private octokit: Octokit;
+  private octokit: any;
 
   constructor(token: string) {
     this.octokit = new Octokit({ auth: token });
@@ -61,7 +61,7 @@ export class GitHubService {
     let ref = branch;
     if (!ref) {
       const { data } = await this.octokit.rest.repos.get({ owner, repo });
-      ref = data.default_branch;
+      ref = data.default_branch!;
     }
 
     const { data } = await this.octokit.rest.git.getTree({
