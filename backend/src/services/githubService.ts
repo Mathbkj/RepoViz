@@ -58,8 +58,10 @@ export class GitHubService {
 
   async getTree(owner: string, repo: string, branch?: string): Promise<RepoTreeResponse> {
     // Resolve default branch if not provided
-    let ref = branch;
-    if (!ref) {
+    let ref: string;
+    if (branch) {
+      ref = branch;
+    } else {
       const { data } = await this.octokit.rest.repos.get({ owner, repo });
       ref = data.default_branch!;
     }
