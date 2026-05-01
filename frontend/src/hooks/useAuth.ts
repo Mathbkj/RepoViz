@@ -19,21 +19,36 @@ export function useAuth(): AuthState {
 
   // Pick up token from URL hash after OAuth redirect
   useEffect(() => {
-    const hash = window.location.hash;
-    const match = hash.match(/[#&]access_token=([^&]+)/);
-    if (match) {
-      const t = match[1];
-      localStorage.setItem(TOKEN_KEY, t);
-      setToken(t);
-      // Clean up hash
-      window.history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
+    const checkHash = () => {
+      const hash = window.location.hash;
+      const match = hash.match(/[#&]access_token=([^&]+)/);
+      if (match) {
+        const t = match[1];
+        localStorage.setItem(TOKEN_KEY, t);
+        setToken(t);
+        // Clean up hash
+        window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
 
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('auth_error')) {
-      console.error('[auth] error:', params.get('auth_error'));
-      window.history.replaceState(null, '', window.location.pathname);
-    }
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('auth_error')) {
+        console.error('[auth] error:', params.get('auth_error'));
+        window.history.replaceState(null, '', window.location.pathname);
+      }
+    };
+
+    // Check hash on mount
+    checkHash();
+
+    // Listen for hash changes (when user clicks login again while already on GitHub)
+    const handleHashChange = () => {
+      checkHash();
+    };
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   // Fetch user info when token is available
