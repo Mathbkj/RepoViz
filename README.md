@@ -10,7 +10,7 @@ Browse your project structure, manage branches, edit files and push commits — 
 [![Node.js](https://img.shields.io/badge/Node.js-18+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**[→ Open the app](https://your-app.netlify.app)**
+**[→ Open the app](https://repoviz.onrender.com)**
 
 </div>
 
