@@ -10,3 +10,13 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+
+  - type: static_site
+    name: repoviz
+    plan: free
+    branch: main
+    buildCommand: cd .. && npm install && cd frontend && npm run build
+    publishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://repo-viz-api.onrender.com

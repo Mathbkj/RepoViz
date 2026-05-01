@@ -3,6 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "predeploy": "cd .. && npm install",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
